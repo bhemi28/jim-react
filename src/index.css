@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.btnShadow{
+    box-shadow: 3px 3px 0 0  #60a5fa;
+}
+
+.btnShadow:hover{
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 0  #60a5fa;
+}
