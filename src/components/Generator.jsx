@@ -30,6 +30,23 @@ const Generator = () => {
     setShowModal(!showModal);
   };
 
+  const updateModal = (muscleGroup) => {
+
+    if(muscles.length > 2 ){
+      return
+    }
+
+    if(poison !== 'individual'){
+      setMuscles([muscleGroup])
+      return
+    }
+
+    if(muscles.includes(muscleGroup)){
+      setMuscles(muscles.filter( val => val !== muscleGroup  ))
+    }
+
+  }
+
   return (
     <SectionWrapper
       header={"generate your workout"}
@@ -72,7 +89,24 @@ const Generator = () => {
           <p>Select muscle groups</p>
           <i className="ri-arrow-down-s-fill absolute top-1/2 -translate-y-1/2 right-3"></i>
         </button>
-        {showModal && <div>modal</div>}
+        {showModal &&
+          <div className="flex flex-col gap-1 p-2">
+            {
+              (poison === 'individual' ? WORKOUTS[poison] : Object.keys(WORKOUTS[poison])).map((muscleGroup,muscleGroupIndex) => {
+                return (
+                  <button 
+                  onClick={() => {
+
+                  }}
+                  key={muscleGroupIndex} 
+                  className="capitalize w-full rounded-sm hover:bg-slate-800 py-2 font-medium"
+                  >
+                    {muscleGroup}
+                  </button>
+                )
+              })
+            }
+          </div>}
       </div>
 
       <Header
