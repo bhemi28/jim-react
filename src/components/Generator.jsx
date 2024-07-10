@@ -32,18 +32,26 @@ const Generator = () => {
 
   const updateModal = (muscleGroup) => {
 
+    if(muscles.includes(muscleGroup)){
+      setMuscles(muscles.filter( val => val !== muscleGroup  ))
+      return
+    }
+    
     if(muscles.length > 2 ){
+      toggleModal()
       return
     }
 
     if(poison !== 'individual'){
       setMuscles([muscleGroup])
+      toggleModal()
       return
     }
 
-    if(muscles.includes(muscleGroup)){
-      setMuscles(muscles.filter( val => val !== muscleGroup  ))
-    }
+    
+
+    setMuscles([...muscles,muscleGroup]);
+    if(muscles.length === 2) toggleModal()
 
   }
 
@@ -67,6 +75,7 @@ const Generator = () => {
               }
               key={typeIndex}
               onClick={() => {
+                setMuscles([])
                 setPoison(type);
               }}
             >
@@ -86,7 +95,7 @@ const Generator = () => {
           onClick={toggleModal}
           className="flex w-full relative items-center justify-center"
         >
-          <p>Select muscle groups</p>
+          <p className="capitalize">{muscles.length == 0 ? 'Select muscle group' : muscles.join(' ')}</p>
           <i className="ri-arrow-down-s-fill absolute top-1/2 -translate-y-1/2 right-3"></i>
         </button>
         {showModal &&
@@ -96,10 +105,12 @@ const Generator = () => {
                 return (
                   <button 
                   onClick={() => {
-
+                    
+                    updateModal(muscleGroup);
                   }}
                   key={muscleGroupIndex} 
-                  className="capitalize w-full rounded-sm hover:bg-slate-800 py-2 font-medium"
+                  className={"capitalize w-full rounded-sm hover:bg-slate-800 py-2 " + (muscles.includes(muscleGroup) ? "text-blue-600" : ""
+                )}
                   >
                     {muscleGroup}
                   </button>
