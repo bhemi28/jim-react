@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { SCHEMES, WORKOUTS } from "../utils/swoldier";
+import Button from "./Button";
 
 const Header = (props) => {
   const { index, title, description } = props;
@@ -143,6 +144,8 @@ const Generator = () => {
           );
         })}
       </div>
+      <Button text={"Generate Workout"} />
+
     </SectionWrapper>
   );
 };

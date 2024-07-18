@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 const Hero = () => {
   return (
@@ -17,7 +18,7 @@ const Hero = () => {
         quae, reiciendis doloribus. Lorem ipsum dolor sit amet consectetur,
         adipisicing elit. Similique quidem fugiat fugit.
       </p>
-      <button className="mt-3 border-2 group  border-blue-400 rounded text-xl font-semibold px-6 py-3 hover:bg-slate-950 group-hover:text-white text-slate-200 btnShadow shadow-blue-300 duration-200 ">Accept <span className="text-blue-400 group-hover:text-slate-200">&</span> begin</button>
+      <Button text={"Accept & Begin"} />
     </div>
   );
 };
